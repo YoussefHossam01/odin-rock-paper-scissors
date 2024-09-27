@@ -33,7 +33,7 @@ function getUserChoice() {
 function playGame(){
     
     // Ask user for number of rounds.
-    rounds = +prompt("Welcome to our game!\nPlease enter the number of rounds you'd like to play: ");
+    let rounds = +prompt("Welcome to our game!\nPlease enter the number of rounds you'd like to play: ");
 
     // Allocate memory for both inputs
     let computerChoice = 0;
@@ -56,7 +56,7 @@ function playGame(){
     }
 
     // Announce the winner.
-    anounceWinner(computerScore, userScore);
+    anounnceWinner(computerScore, userScore);
 
     // Determine the winner of each round and update the score
     function playRound(computerChoice, userChoice){

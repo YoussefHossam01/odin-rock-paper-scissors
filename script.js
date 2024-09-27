@@ -30,3 +30,6 @@ function getUserChoice() {
 
 alert(getComputerChoice());
 alert(getUserChoice());
+
+let computerScore = 0;
+let userScore = 0;

@@ -73,12 +73,12 @@ function playGame(){
                 computerChoice === "scissors" && userChoice === "paper")
         {
             console.log(`You lose! ${computerChoice} beats ${userChoice}.`);
-            computerChoice++;
+            computerScore++;
         }
 
         else {
             console.log(`You win! ${userChoice} beats ${computerChoice}.`);
-            userChoice++;
+            userScore++;
         }
     }
 

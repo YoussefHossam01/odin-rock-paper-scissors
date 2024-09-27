@@ -30,11 +30,33 @@ function getUserChoice() {
 
 let computerChoice = getComputerChoice();
 let userChoice = getUserChoice();
+playRound(computerChoice, userChoice);
+
 
 let computerScore = 0;
 let userScore = 0;
 
 // Determine the winner of each round and update the score
 function playRound(computerChoice, userChoice){
+    
+    // Compare both choices, we know that rock beats scissors,
+    // paper beats rock, and scissors beats paper, else a tie.
 
+    if (computerChoice === userChoice)
+    {
+        console.log("It's a Tie!")
+    }
+    else if (computerChoice === "rock" && userChoice === "scissors" ||
+             computerChoice === "paper" && userChoice === "rock"  ||
+             computerChoice === "scissors" && userChoice === "paper")
+    {
+        console.log(`You lose! ${computerChoice} beats ${userChoice}.`);
+        computerChoice++;
+    }
+
+    else {
+        console.log(`You win! ${userChoice} beats ${computerChoice}.`);
+        userChoice++;
+    }
 }
+

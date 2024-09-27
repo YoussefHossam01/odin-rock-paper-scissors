@@ -33,9 +33,10 @@ function playGame(){
     
     // Ask user for number of rounds.
     rounds = +prompt("Welcome to our game!\nPlease enter the number of rounds you'd like to play: ");
-    // Get both inputs
-    let computerChoice = getComputerChoice();
-    let userChoice = getUserChoice();
+
+    // Allocate memory for both inputs
+    let computerChoice = 0;
+    let userChoice = 0;
 
     // Allocate memory for both scores
     let computerScore = 0;
@@ -44,6 +45,12 @@ function playGame(){
 
     // Play the game the required number of rounds.
     for (let i = 0; i < rounds; i++){
+        
+        // Get both inputs.
+        computerChoice = getComputerChoice();
+        userChoice = getUserChoice();
+
+        // Announce the winner of the round and save the score.
         playRound(computerChoice, userChoice);
     }
 

@@ -28,35 +28,64 @@ function getUserChoice() {
     return choice;
 }
 
-let computerChoice = getComputerChoice();
-let userChoice = getUserChoice();
-playRound(computerChoice, userChoice);
-
-
-let computerScore = 0;
-let userScore = 0;
-
-// Determine the winner of each round and update the score
-function playRound(computerChoice, userChoice){
+// Start the game.
+function playGame(){
     
-    // Compare both choices, we know that rock beats scissors,
-    // paper beats rock, and scissors beats paper, else a tie.
+    // Ask user for number of rounds.
+    rounds = +prompt("Welcome to our game!\nPlease enter the number of rounds you'd like to play: ");
+    // Get both inputs
+    let computerChoice = getComputerChoice();
+    let userChoice = getUserChoice();
 
-    if (computerChoice === userChoice)
-    {
-        console.log("It's a Tie!")
-    }
-    else if (computerChoice === "rock" && userChoice === "scissors" ||
-             computerChoice === "paper" && userChoice === "rock"  ||
-             computerChoice === "scissors" && userChoice === "paper")
-    {
-        console.log(`You lose! ${computerChoice} beats ${userChoice}.`);
-        computerChoice++;
+    // Allocate memory for both scores
+    let computerScore = 0;
+    let userScore = 0;
+
+
+    // Play the game the required number of rounds.
+    for (let i = 0; i < rounds; i++){
+        playRound(computerChoice, userChoice);
     }
 
-    else {
-        console.log(`You win! ${userChoice} beats ${computerChoice}.`);
-        userChoice++;
+    // Announce the winner.
+    anounceWinner(computerScore, userScore);
+
+    // Determine the winner of each round and update the score
+    function playRound(computerChoice, userChoice){
+        
+        // Compare both choices, we know that rock beats scissors,
+        // paper beats rock, and scissors beats paper, else a tie.
+
+        if (computerChoice === userChoice)
+        {
+            console.log("It's a Tie!")
+        }
+        else if (computerChoice === "rock" && userChoice === "scissors" ||
+                computerChoice === "paper" && userChoice === "rock"  ||
+                computerChoice === "scissors" && userChoice === "paper")
+        {
+            console.log(`You lose! ${computerChoice} beats ${userChoice}.`);
+            computerChoice++;
+        }
+
+        else {
+            console.log(`You win! ${userChoice} beats ${computerChoice}.`);
+            userChoice++;
+        }
+    }
+
+    // Announce the Winner
+    function anounceWinner(computerScore, userScore){
+        
+        if (computerScore > userScore){
+            console.log(`You LOSE! Computer scored ${computerScore} and you scored ${userScore}.`);
+        }
+        else if (computerScore < userScore)
+        {
+            console.log(`You WIN! You scored ${userScore} and computer scored ${computerScore}.`);
+        }
+        else {
+            console.log(`It's a TIE! You  both scored ${userScore}.`);
+        }
     }
 }
-

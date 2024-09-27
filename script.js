@@ -1,6 +1,6 @@
 // This function returns a random string be it rock, paper or scissors.
 
-function getComputerChoice(){
+function getComputerChoice() {
     // Create an array to put our strings in it.
     const choices = ['rock', 'paper', 'scissors'];
 
@@ -12,4 +12,21 @@ function getComputerChoice(){
     return choices[choice];
 }
 
+// Get the user choice
+function getUserChoice() {
+
+    // Prompt the user for an input.
+    let choice = prompt('Please enter your choice: "rock", "paper", or "scissors": ');
+    choice = choice.toLowerCase();
+    // Validate the input
+    while(choice !== "rock" && choice !== "paper" && choice !== "scissors") {
+
+            choice = prompt('Please enter your choice: "rock", "paper", or "scissors": ');
+    }
+
+    // Return the user's choice
+    return choice;
+}
+
 alert(getComputerChoice());
+alert(getUserChoice());

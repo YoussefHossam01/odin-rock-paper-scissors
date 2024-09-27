@@ -56,7 +56,7 @@ function playGame(){
     }
 
     // Announce the winner.
-    anounnceWinner(computerScore, userScore);
+    announceWinner(computerScore, userScore);
 
     // Determine the winner of each round and update the score
     function playRound(computerChoice, userChoice){
@@ -83,7 +83,7 @@ function playGame(){
     }
 
     // Announce the Winner
-    function anounceWinner(computerScore, userScore){
+    function announceWinner(computerScore, userScore){
         
         if (computerScore > userScore){
             console.log(`You LOSE! Computer scored ${computerScore} and you scored ${userScore}.`);

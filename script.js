@@ -28,8 +28,13 @@ function getUserChoice() {
     return choice;
 }
 
-alert(getComputerChoice());
-alert(getUserChoice());
+let computerChoice = getComputerChoice();
+let userChoice = getUserChoice();
 
 let computerScore = 0;
 let userScore = 0;
+
+// Determine the winner of each round and update the score
+function playRound(computerChoice, userChoice){
+
+}

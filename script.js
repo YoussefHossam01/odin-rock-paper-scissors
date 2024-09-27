@@ -1,5 +1,6 @@
-// This function returns a random string be it rock, paper or scissors.
+playGame();
 
+// This function returns a random string be it rock, paper or scissors.
 function getComputerChoice() {
     // Create an array to put our strings in it.
     const choices = ['rock', 'paper', 'scissors'];

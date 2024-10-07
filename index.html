@@ -7,14 +7,22 @@
     <title>Document</title>
   </head>
   <body>
-    <label>Enter the winning score</label>
-    <input type="number" class="score" placeholder="Winning Score" min="1" value="1">
-    <button class="confirm">Let's Begin</button>
+    <header>
+      <h1>Welcome to our Game!</h1>
+    </header>
+    <div class="game-setup">
+      <label>Enter the winning score</label>
+      <input type="number" class="score" placeholder="Winning Score" min="1" value="1">
+      <button class="confirm">Let's Begin</button>
+    </div>
+   <div class="buttons">
     <button class="btn rock">Rock</button>
     <button class="btn paper">Paper</button>
     <button class="btn scissors">Scissors</button>
+   </div>
     <div class="round result"></div>
     <div class="final result"></div>
+    <button class="btn again">Play Again</button>
   </body>
   <script src="script.js" rel="script"></script>
 </html>

@@ -5,7 +5,8 @@ const maxScore = document.querySelector("input.score");
 const rock = document.querySelector(".btn.rock");
 const paper = document.querySelector(".btn.paper");
 const scissors = document.querySelector(".btn.scissors");
-const confirm = document.querySelector(".confirm")
+const confirm = document.querySelector(".confirm");
+const playAgain = document.querySelector(".again");
 
 // To display results
 const roundResult = document.querySelector(".round.result");
@@ -20,11 +21,21 @@ let winningValue = 0;
 const GAMEOVER = "Game Over!"
 
 confirm.addEventListener("click", () => {
+    init();
     winningValue = +maxScore.value;
     console.log(winningValue)
     playGame();
 })
 
+playAgain.addEventListener("click", () =>{
+    init();
+    confirm.addEventListener("click", () => {
+        init();
+        winningValue = +maxScore.value;
+        console.log(winningValue)
+        playGame();
+    })
+})
 // This function returns a random string be it rock, paper or scissors.
 function getComputerChoice() {
     // Create an array to put our strings in it.
@@ -40,7 +51,7 @@ function getComputerChoice() {
 
 // Start the game.
 function playGame() {
-
+    init();
     // Play the round determing user input based on which btn was clicked.
     rock.addEventListener("click", () => {
         if (roundResult.textContent !== GAMEOVER) {
@@ -91,7 +102,7 @@ function playRound(userChoice) {
 
 
 // Announce the Winner
-function announceWinner(computerScore, userScore) {
+function announceWinner() {
 
     if (userScore === winningValue || computerScore === winningValue) {
         roundResult.textContent = GAMEOVER
@@ -107,3 +118,9 @@ function announceWinner(computerScore, userScore) {
     }
 }
 
+function init(){
+    computerScore = 0;
+    userScore = 0;
+    roundResult.textContent = "";
+    finalResult.textContent = "";
+}

@@ -5,16 +5,25 @@ const maxScore = document.querySelector("input.score");
 const rock = document.querySelector(".btn.rock");
 const paper = document.querySelector(".btn.paper");
 const scissors = document.querySelector(".btn.scissors");
+const confirm = document.querySelector(".confirm")
 
 // To display results
 const roundResult = document.querySelector(".round.result");
+const finalResult = document.querySelector(".final.result");
 
 
 // Allocate memory for both scores
 let computerScore = 0;
 let userScore = 0;
 
-playGame();
+let winningValue = 0;
+const GAMEOVER = "Game Over!"
+
+confirm.addEventListener("click", () => {
+    winningValue = +maxScore.value;
+    console.log(winningValue)
+    playGame();
+})
 
 // This function returns a random string be it rock, paper or scissors.
 function getComputerChoice() {
@@ -32,25 +41,27 @@ function getComputerChoice() {
 // Start the game.
 function playGame() {
 
-    winningValue = +maxScore.value;
-    console.log(winningValue)
-    
     // Play the round determing user input based on which btn was clicked.
-    while (computerScore !== winningValue && userScore !== winningValue)
-    {
-        rock.addEventListener("click", () =>{
+    rock.addEventListener("click", () => {
+        if (roundResult.textContent !== GAMEOVER) {
             playRound("rock");
-        });
-    
-        paper.addEventListener("click", () =>{
+            announceWinner(computerScore, userScore)
+        }
+    });
+
+    paper.addEventListener("click", () => {
+        if (roundResult.textContent !== GAMEOVER) {
             playRound("paper");
-        });
-    
-        scissors.addEventListener("click", () =>{
+            announceWinner(computerScore, userScore)
+        }
+    });
+
+    scissors.addEventListener("click", () => {
+        if (roundResult.textContent !== GAMEOVER) {
             playRound("scissors");
-        });
-    }
-        announceWinner(computerScore, userScore);
+            announceWinner(computerScore, userScore);
+        }
+    });
 }
 
 
@@ -68,12 +79,12 @@ function playRound(userChoice) {
     else if (computerChoice === "rock" && userChoice === "scissors" ||
         computerChoice === "paper" && userChoice === "rock" ||
         computerChoice === "scissors" && userChoice === "paper") {
-            roundResult.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
+        roundResult.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
         computerScore++;
     }
 
     else {
-         roundResult.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
+        roundResult.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
         userScore++;
     }
 }
@@ -82,14 +93,17 @@ function playRound(userChoice) {
 // Announce the Winner
 function announceWinner(computerScore, userScore) {
 
-    if (computerScore > userScore) {
-        console.log(`You LOSE! Computer scored ${computerScore} and you scored ${userScore}.`);
-    }
-    else if (computerScore < userScore) {
-        console.log(`You WIN! You scored ${userScore} and computer scored ${computerScore}.`);
-    }
-    else {
-        console.log(`It's a TIE! You  both scored ${userScore}.`);
+    if (userScore === winningValue || computerScore === winningValue) {
+        roundResult.textContent = GAMEOVER
+        if (computerScore > userScore) {
+            finalResult.textContent = `You LOSE! Computer scored ${computerScore} and you scored ${userScore}.`;
+        }
+        else if (computerScore < userScore) {
+            finalResult.textContent = `You WIN! You scored ${userScore} and computer scored ${computerScore}.`;
+        }
+        else {
+            finalResult.textContent = `It's a TIE! You  both scored ${userScore}.`;
+        }
     }
 }
 

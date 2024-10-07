@@ -1,3 +1,6 @@
+// To determine the maximum score
+const maxScore = document.querySelector("input.score");
+
 // Add eventlisteners to buttons
 const rock = document.querySelector(".btn.rock");
 const paper = document.querySelector(".btn.paper");
@@ -5,6 +8,11 @@ const scissors = document.querySelector(".btn.scissors");
 
 // To display results
 const roundResult = document.querySelector(".round.result");
+
+
+// Allocate memory for both scores
+let computerScore = 0;
+let userScore = 0;
 
 playGame();
 
@@ -24,31 +32,31 @@ function getComputerChoice() {
 // Start the game.
 function playGame() {
 
-    // Ask user for number of rounds.
+    winningValue = +maxScore.value;
+    console.log(winningValue)
     
     // Play the round determing user input based on which btn was clicked.
-    rock.addEventListener("click", () =>{
-        playRound("rock");
-    });
-
-    paper.addEventListener("click", () =>{
-        playRound("paper");
-    });
-
-    scissors.addEventListener("click", () =>{
-        playRound("scissors");
-    });
-
-    // Announce the winner.
-    announceWinner(computerScore, userScore);
+    while (computerScore !== winningValue && userScore !== winningValue)
+    {
+        rock.addEventListener("click", () =>{
+            playRound("rock");
+        });
+    
+        paper.addEventListener("click", () =>{
+            playRound("paper");
+        });
+    
+        scissors.addEventListener("click", () =>{
+            playRound("scissors");
+        });
+    }
+        announceWinner(computerScore, userScore);
 }
 
 
 // Determine the winner of each round and update the score
 function playRound(userChoice) {
-    // Allocate memory for both scores
-    let computerScore = 0;
-    let userScore = 0;
+
     let computerChoice = getComputerChoice();
 
     // Compare both choices, we know that rock beats scissors,

@@ -3,6 +3,8 @@ const rock = document.querySelector(".btn.rock");
 const paper = document.querySelector(".btn.paper");
 const scissors = document.querySelector(".btn.scissors");
 
+// To display results
+const roundResult = document.querySelector(".round.result");
 
 playGame();
 
@@ -23,7 +25,7 @@ function getComputerChoice() {
 function playGame() {
 
     // Ask user for number of rounds.
-    let rounds = +prompt("Welcome to our game!\nPlease enter the number of rounds you'd like to play: ");
+    
     // Play the round determing user input based on which btn was clicked.
     rock.addEventListener("click", () =>{
         playRound("rock");
@@ -53,17 +55,17 @@ function playRound(userChoice) {
     // paper beats rock, and scissors beats paper, else a tie.
 
     if (computerChoice === userChoice) {
-        console.log("It's a Tie!")
+        roundResult.textContent = "It's a Tie!"
     }
     else if (computerChoice === "rock" && userChoice === "scissors" ||
         computerChoice === "paper" && userChoice === "rock" ||
         computerChoice === "scissors" && userChoice === "paper") {
-        console.log(`You lose! ${computerChoice} beats ${userChoice}.`);
+            roundResult.textContent = `You lose! ${computerChoice} beats ${userChoice}.`;
         computerScore++;
     }
 
     else {
-        console.log(`You win! ${userChoice} beats ${computerChoice}.`);
+         roundResult.textContent = `You win! ${userChoice} beats ${computerChoice}.`;
         userScore++;
     }
 }

@@ -4,7 +4,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: content-box;
-    border: 1px solid white;
+    
 }
 
 body{
@@ -21,6 +21,7 @@ body{
 .game-setup {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 20px;
 }
 
@@ -28,4 +29,22 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+button {
+    width: 100px;
+    height: 100px;
+    font-size: large;
+    color: white;
+    background-color: black;
+}
+
+input {
+    width: 400px;
+    height: 30px;
+    font-size: larger;
+}
+
+label{
+    font-size: larger;
 }
